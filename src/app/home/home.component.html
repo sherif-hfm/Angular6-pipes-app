@@ -1,0 +1,21 @@
+<p>
+  home works!
+</p>
+<div>
+  <input type="text" [(ngModel)]="filterStr">
+  <button type="button" (click)="addServer()" class="w3-button w3-blue">Add Server</button><br>
+  Application Status:{{(appStatus | async)== null?'Loading...':appStatus | async}}
+  <div *ngFor="let server of servers | filter:filterStr ;let i : index" class=" w3-container" >
+    <div class="w3-row">
+      <div class="w3-col m6 w3-panel w3-green">
+          <span>{{server.type | uppercase}}</span>|
+          <span>{{server.name | shorten:4}}</span>|
+          <span>{{server.statred | date}}</span>|
+          <span>{{server.statred | date:'dd-MMMM-yyyy'}}</span>|
+          <span>{{server.location | i18nSelect: country}}</span>|
+          <span class="w3-button w3-blue">{{server.status }}</span>
+      </div>
+  </div>
+  </div>
+  
+</div>
